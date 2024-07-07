@@ -22,13 +22,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
-    <title>[RCC] Instrutores - Promovidos</title>
+    <title>[RCC] Instrutores - Diário Oficial</title>
     <style>
         /* Estilo do HTML */
+
+
+
+        #MenuLateral {
+            background-color: #07325A;
+
+        }
 
         h1,
         h2 {
             color: #005dad;
+        }
+
+        h3 {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #555;
+            margin-bottom: 10px;
         }
 
         .section {
@@ -327,26 +341,7 @@
             position: relative;
             height: auto;
         }
-
-        #MenuLateral {
-            background-color: #07325A;
-
-        }
     </style>
-
-    <style>
-        .promo-item,
-        .project-item {
-            background-color: #e7e7e7;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: left;
-            display: flex;
-            align-items: center;
-        }
-    </style>
-
 
 </head>
 
@@ -421,6 +416,8 @@
                                 <i class='bx bx-code-alt nav_icon nav_developed'></i><span>Qox</span>
                             </div>
                         </div>
+
+
                     </div>
                 </nav>
             </div>
@@ -428,64 +425,124 @@
                 <div class="row">
                     <div class="container">
                         <img class="logo" src="https://i.imgur.com/sVUAYxC.gif" alt="Habbo Logo">
+                        <h1>Diário Oficial</h1>
+
+                        <div class="section" id="description">
+                            <p><span class="blue-text">O Setor de Relações Comunicativas dos Instrutores</span>, estarão
+                                dispostas curiosidades e informações adicionais que ocorreram ao longo da semana com os
+                                membros da nossa companhia.</p>
+                        </div>
 
                         <div class="section">
-                            <h1>Promovidos da Semana</h1>
-                            <p id="periodo-abrangencia">Período de abrangência: Aguardando dados...</p>
+                            <h2>Entrevistas dos promovidos:</h2>
+                            <h3>Confira os depoimentos de nossos promovidos e as expectativas para seus novos cargos!
+                            </h3>
+                            <div id="entrevistas"></div>
                         </div>
 
-                        <!-- Exibir todos os itens de promoção dinamicamente -->
-                        <div class="section" id="novidades-semana">
-                            <!-- Os itens serão adicionados aqui dinamicamente -->
+                        <div class="section">
+                            <h2>Melhores nos cargos:</h2>
+                            <h3>Confira os melhores membros em seus respectivos cargos da semana ou quinzena!</h3>
+                            <div id="melhoresCargos"></div>
                         </div>
+
+                        <div class="section">
+                            <h2>Promovidos na RCC:</h2>
+                            <h3>Confira os Instrutores promovidos na instituição durante a semana!</h3>
+                            <div id="promovidosRCC"></div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var url = 'https://script.google.com/macros/s/AKfycby7uqvPuX7fWdssY80JQKoZq0OzxvRVtHAEgW6plu8U4N5P7nP8S0W2SqUt0fvy5iKdMQ/exec';
-
-            fetch(url)
+        // Função para carregar os dados da planilha
+        function loadData() {
+            fetch('https://script.google.com/macros/s/AKfycbxpZaaLpY7XTlY1vgMNvkqzOVNEW9sb7lJBiDGYKF63o0f37CFUozsmlJShflUK_HC7Cg/exec')
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Dados recebidos:', data);
+                    // Atualizar entrevistas
+                    updateEntrevistas(data.entrevistas);
 
-                    // Exibe o período de abrangência
-                    var periodoInicio = data.periodoInicio;
-                    var periodoFim = data.periodoFim;
-                    var periodoAbrangencia = document.getElementById('periodo-abrangencia');
-                    periodoAbrangencia.textContent = `Período de abrangência: ${periodoInicio} até ${periodoFim}`;
+                    // Atualizar melhores cargos
+                    updateMelhoresCargos(data.melhoresCargos);
 
-                    // Exibe os dados dos promovidos
-                    // Exibe os dados dos promovidos
-                    var novidadesContainer = document.getElementById('novidades-semana');
-                    data.promovidos.forEach(item => {
-                        // Verifica se ambos nome e cargo estão preenchidos
-                        if (item.nome.trim() !== '' && item.cargo.trim() !== '') {
-                            var div = document.createElement('div');
-                            div.className = 'promo-item';
-                            div.innerHTML = `
-             <img src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${encodeURIComponent(item.cargo)}&direction=2&head_direction=3&size=l&gesture=sml&action=wlk,wav" alt="Avatar">
-              <b>${item.cargo} </b>:  promovido(a) a ${item.nome}!
-        `;
-                            novidadesContainer.appendChild(div);
-                        }
-                    });
-
-
-
-
+                    // Atualizar promovidos RCC
+                    updatePromovidosRCC(data.promovidosRCC);
                 })
-                .catch(error => {
-                    console.error('Erro ao carregar dados:', error);
-                });
-        });
-    </script>
+                .catch(error => console.error('Erro ao carregar dados:', error));
+        }
 
+        // Função para atualizar as entrevistas na página
+        function updateEntrevistas(entrevistas) {
+            const entrevistasContainer = document.getElementById('entrevistas');
+            entrevistasContainer.innerHTML = ''; // Limpar antes de adicionar novos itens
+
+            entrevistas.forEach(entrevista => {
+                // Verifica se todos os campos estão preenchidos
+                if (entrevista.cargo && entrevista.nome && entrevista.comentario) {
+                    const item = document.createElement('div');
+                    item.classList.add('item');
+                    item.innerHTML = `
+                         <div class="cargo"><strong>${entrevista.cargo}</strong></div>
+                        <img class="avatar" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${encodeURIComponent(entrevista.nome)}&direction=3&head_direction=3&size=l&gesture=spk&headonly=1" alt="Avatar">
+                        <div><strong>${entrevista.nome}:</strong></div>
+                        <div>${entrevista.comentario}</div>
+                    `;
+                    entrevistasContainer.appendChild(item);
+                }
+            });
+        }
+
+        // Função para atualizar os melhores cargos na página
+        function updateMelhoresCargos(melhoresCargos) {
+            const melhoresCargosContainer = document.getElementById('melhoresCargos');
+            melhoresCargosContainer.innerHTML = ''; // Limpar antes de adicionar novos itens
+
+            melhoresCargos.forEach(melhorCargo => {
+                // Verifica se todos os campos estão preenchidos
+                if (melhorCargo.cargo && melhorCargo.nome && melhorCargo.pontuacao) {
+                    const item = document.createElement('div');
+                    item.classList.add('item');
+                    item.innerHTML = `
+                        <img class="avatar" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${encodeURIComponent(melhorCargo.nome)}&direction=3&head_direction=3&size=l&gesture=sml&headonly=1" alt="Avatar">
+                        <div class="cargo"><strong>${melhorCargo.cargo}:</strong></div>
+                        <div>${melhorCargo.nome} obteve um total de ${melhorCargo.pontuacao} pontos.</div>
+                    `;
+                    melhoresCargosContainer.appendChild(item);
+                }
+            });
+        }
+
+        // Função para atualizar os promovidos RCC na página
+        function updatePromovidosRCC(promovidosRCC) {
+            const promovidosRCCContainer = document.getElementById('promovidosRCC');
+            promovidosRCCContainer.innerHTML = ''; // Limpar antes de adicionar novos itens
+
+            promovidosRCC.forEach(promovidoRCC => {
+                // Verifica se todos os campos estão preenchidos
+                if (promovidoRCC.nome && promovidoRCC.comentario) {
+                    const item = document.createElement('div');
+                    item.classList.add('item');
+                    item.innerHTML = `
+                        <img class="avatar" src="https://www.habbo.com.br/habbo-imaging/avatarimage?img_format=png&user=${encodeURIComponent(promovidoRCC.nome)}&direction=3&head_direction=3&size=l&gesture=sml&headonly=1" alt="Avatar">
+                        <div><strong>${promovidoRCC.nome}:</strong></div>
+                        <div>${promovidoRCC.comentario}</div>
+                    `;
+                    promovidosRCCContainer.appendChild(item);
+                }
+            });
+        }
+
+        // Carregar os dados ao carregar a página
+        window.onload = loadData;
+    </script>
 </body>
 
-</html>
+
+
+sou eu

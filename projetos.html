@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>[SRC] - Projetos / Sugestões / Correções</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
     <link rel="icon"
         href="https://www.habbo.com.br/habbo-imaging/badge/b09064s43084s50134eda71d18c813ca341e7e285475586bf5.gif">
     <link rel="stylesheet" href="css.css">
@@ -12,37 +22,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <title>[RCC] Instrutores - Projetos</title>
     <style>
         /* Estilo do HTML */
-        html {
-            height: 100%;
-            background-color: #ffffff;
-            /* Background branco para a página */
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: 'Poppins', sans-serif;
-            overflow-y: auto;
-            background: transparent;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 800px;
-            text-align: center;
-            position: relative;
-            transition: transform 0.5s ease-in-out;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
 
         h1,
         h2 {
@@ -60,36 +42,27 @@
             margin-bottom: 15px;
             text-align: left;
             display: flex;
-            /* Para que os itens fiquem em linha */
             align-items: center;
-            /* Alinha os itens verticalmente */
             gap: 10px;
-            /* Espaçamento entre os elementos internos */
         }
 
         .item-content {
             flex: 1;
-            /* Ocupa todo o espaço disponível */
         }
 
         .item-content h3,
         .item-content p {
             margin: 0;
-            /* Remove as margens padrão */
         }
 
         .logo {
             width: auto;
-            /* Utiliza o tamanho original da imagem */
             max-width: 100%;
-            /* Garante que não ultrapasse o tamanho original */
             height: auto;
             margin: 40px auto;
-            /* Margem de 40px nas laterais e superior/inferior automático */
             position: relative;
             z-index: 0;
             margin-top: 20px;
-            /* Ajusta a margem superior para descer mais um pouco */
         }
 
         .credits {
@@ -144,65 +117,9 @@
             scrollbar-color: #07325A #0e64b5;
         }
 
-        #loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0e64b5;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 2em;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        /* Esconder a tela de carregamento */
-        #loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* Animação para o texto "Carregando..." */
-        @keyframes fadeInOut {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
-        }
-
-        /* Aplicar a animação ao texto */
-        #loading-screen span {
-            animation: fadeInOut 1s infinite;
-        }
-
-        /* Animação para o conteúdo */
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .nav {
-            position: fixed;
             top: 0;
             left: 0;
-            width: 200px;
-            height: 100vh;
             padding: 1rem 1rem 3rem;
             background-color: #07325A;
             box-shadow: 1px 0 0 rgba(22, 8, 43, 0.1);
@@ -225,7 +142,7 @@
         .nav_logo {
             font-weight: bold;
             margin-bottom: 2.5rem;
-            font-size: 24px;
+            font-size: 18px;
             color: white;
         }
 
@@ -242,7 +159,6 @@
         }
 
         .nav_link {
-            display: flex;
             align-items: center;
             color: white;
             text-decoration: none;
@@ -261,181 +177,333 @@
         .nav_name {
             font-size: 14px;
             font-weight: 500;
-            margin-left: 10px;
         }
-
 
         .blue-text {
             font-weight: bold;
             color: #005dad;
-            /* Cor azul utilizando o mesmo RGB mencionado anteriormente */
         }
 
-        @media (max-width: 768px) {
-            .blue-text {
-                font-weight: bold;
-                color: #005dad;
-                font-size: 14px;
-                /* Exemplo de tamanho de fonte para dispositivos móveis */
-                line-height: 1.4;
-                /* Exemplo de altura da linha para dispositivos móveis */
-            }
-        }
 
 
         .nav_developed {
             color: #fff;
         }
 
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .banner-content h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .banner-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #005dad;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #003a70;
+        }
+
+        element.style {
+            background-color: #ffffff;
+            color: #003a70;
+            font-family: Poppins, Arial;
+            font-weight: 700;
+            vertical-align: baseline;
+        }
+
+        .part1-describe-functions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px 60px 100px;
+            width: none;
+            background-color: #005dad;
+            border-radius: 80px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2000;
+        }
+
+        .sec-describe-functions {
+            width: 100%;
+            height: 100%;
+            color: white;
+            margin: 0;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        h3 {
+            display: block;
+            font-size: 1.17em;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+        }
+
+        .name-describe {
+            background-color: #5F79B2;
+            margin-bottom: 17px;
+            padding: 20px;
+            text-align: justify;
+            align-items: start;
+            justify-content: start;
+            border-radius: 10px;
+        }
+
+        .sec-describe-functions {
+            color: white;
+            margin: 0;
+        }
+
+        .function-name {
+            background-color: #AFBCD9;
+            margin-bottom: 17px;
+            text-align: justify;
+            align-items: end;
+            justify-content: end;
+            border-radius: 10px;
+            position: relative;
+            height: auto;
+        }
+
+        .activity-name {
+            background-color: #AFBCD980;
+            text-align: justify;
+            align-items: start;
+            justify-content: start;
+            width: 100%;
+            border-radius: 10px;
+            position: relative;
+            height: auto;
+        }
+
+        #MenuLateral {
+            background-color: #07325A;
+
+        }
     </style>
+
 </head>
 
 <body>
+    <div class="container-flex">
+        <div class="row">
+            <div class="col-12 d-block d-sm-none" id="MenuSuperior">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false"><i class='bx bx-menu nav_icon'></i></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="./index.html">Home</a>
+                            <a class="dropdown-item" href="./ata_de_reuniao.html">Ata de Reunião</a>
+                            <a class="dropdown-item" href="./projetos.html">Projetos</a>
+                            <a class="dropdown-item" href="./promovidos.html">Promovidos</a>
+                            <a class="dropdown-item" href="./diario_oficial.html">Diário Oficial</a>
 
-    <nav class="nav" id="navbar">
-        <div class="nav_container">
-            <div class="nav_logo">
-                [SRC]
+                        </div>
+
+                    </li>
+                    <li><a class="nav-link text-white" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false">Setor de Relações Comunicativas</a></li>
+                    <li><a class="nav-link text-white" data-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="true" aria-expanded="false"> <i
+                                class='bx bx-code-alt nav_icon nav_developed'></i><span>Qox</span>
+                        </a></li>
+                </ul>
             </div>
-            <div class="nav_list">
-                <div class="nav_item">
-                    <a href="./home.html" class="nav_link">
-                        <i class='bx bx-home nav_icon'></i>
-                        <span id="home" class="nav_name">Home</span>
-                    </a>
-                </div>
+            <div class="col-12 col-md-4 col-lg-3 d-none d-sm-block" id="MenuLateral">
+                <nav class="nav" id="navbar">
+                    <div class="nav_container">
+                        <div class="nav_logo">
+                            Setor de Relações Comunicativas
+                        </div>
+                        <div class="nav_list">
+                            <div class="nav_item">
+                                <a href="./index.html" class="nav_link">
+                                    <i class='bx bx-home nav_icon'></i>
+                                    <span id="home" class="nav_name">Home</span>
+                                </a>
+                            </div>
 
-                <div class="nav_item">
-                    <a href="./atadereuniao.html" class="nav_link">
-                        <i class='bx bx-news nav_icon'></i>
-                        <span id="atadereuniao" class="nav_name">ATA de Reunião</span>
-                    </a>
-                </div>
+                            <div class="nav_item">
+                                <a href="./ata_de_reuniao.html" class="nav_link">
+                                    <i class='bx bx-news nav_icon'></i>
+                                    <span id="atadereuniao" class="nav_name">ATA de Reunião</span>
+                                </a>
+                            </div>
 
-                <div class="nav_item">
-                    <a href="./promovidos.html" class="nav_link">
-                        <i class='bx bxs-medal nav_icon'></i>
-                        <span id="promovidos" class="nav_name">Promovidos da Semana</span>
-                    </a>
-                </div>
+                            <div class="nav_item">
+                                <a href="./promovidos.html" class="nav_link">
+                                    <i class='bx bxs-medal nav_icon'></i>
+                                    <span id="promovidos" class="nav_name">Promovidos da Semana</span>
+                                </a>
+                            </div>
 
-                <div class="nav_item">
-                    <a href="./diariooficial.html" class="nav_link">
-                        <i class='bx bx-news nav_icon'></i>
-                        <span id="diariooficial" class="nav_name">Diário Oficial</span>
-                    </a>
-                </div>
+                            <div class="nav_item">
+                                <a href="./diario_oficial.html" class="nav_link">
+                                    <i class='bx bx-news nav_icon'></i>
+                                    <span id="diariooficial" class="nav_name">Diário Oficial</span>
+                                </a>
+                            </div>
 
-                <div class="nav_item">
-                    <a href="./projetos.html" class="nav_link">
-                        <i class='bx bx-news nav_icon'></i>
-                        <span id="projetos" class="nav_name">Projetos / Sugestões / Correções</span>
-                    </a>
+                            <div class="nav_item">
+                                <a href="./projetos.html" class="nav_link">
+                                    <i class='bx bx-news nav_icon'></i>
+                                    <span id="projetos" class="nav_name">Projetos / Sugestões / Correções</span>
+                                </a>
+                            </div>
+                            <div class="nav_item text-white">
+                                <i class='bx bx-code-alt nav_icon nav_developed'></i><span>Qox</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+            <div class="col-12 col-md-8 col-lg-9" id="CorpoDaPagina">
+                <div class="row">
+                    <div class="container">
+                        <img class="logo" src="https://i.imgur.com/sVUAYxC.gif" alt="Habbo Logo">
+                        <h1>Projetos / Sugestões / Correções</h1>
+                        <div class="section" id="description">
+                            <p><span class="blue-text">O Setor de Relações Comunicativas dos Instrutores</span> informa
+                                as novidades da
+                                semana! Nela, encontrará encontrará os projetos aprovados na companhia.</p>
+                        </div>
+
+                        <div class="section" id="projetos">
+                            <h2>Projetos</h2>
+                            <div id="projetos-list"></div>
+                        </div>
+
+                        <div class="section" id="sugestoes">
+                            <h2>Sugestões</h2>
+                            <div id="sugestoes-list"></div>
+                        </div>
+
+                        <div class="section" id="correcoes">
+                            <h2>Correções</h2>
+                            <div id="correcoes-list"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="bx bx-code-alt nav_icon nav_developed">
-                Qox
-            </div>
         </div>
-    </nav>
-
-    <div class="container">
-        <img class="logo" src="https://i.imgur.com/sVUAYxC.gif" alt="Habbo Logo">
-        <h1>Projetos / Sugestões / Correções</h1>
-        <div class="section" id="description">
-            <p><span class="blue-text">O Setor de Relações Comunicativas dos Instrutores</span> informa as novidades da
-                semana! Nela, encontrará encontrará os projetos aprovados na companhia.</p>
-        </div>
-
-        <div class="section" id="projetos">
-            <h2>Projetos</h2>
-            <div id="projetos-list"></div>
-        </div>
-
-        <div class="section" id="sugestoes">
-            <h2>Sugestões</h2>
-            <div id="sugestoes-list"></div>
-        </div>
-
-        <div class="section" id="correcoes">
-            <h2>Correções</h2>
-            <div id="correcoes-list"></div>
-        </div>
-
-        <div class="credits" id="credits">
-            <p>Feito por <strong>[SRC]</strong></p>
-            <i class='bx bxs-smile'></i>
-            <span class="line-break"></span>
-        </div>
-    </div>
-
-    <div id="loading-screen">
-        <span>Carregando...</span>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Documento carregado');
-            fetch('https://script.google.com/macros/s/AKfycbybh1cYcYtvJbzgGuWjzaXSjM5pfOeMt1NVl5-H-RvK68NcBoATyYhxjcQkdpuuoXzOHw/exec')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Dados recebidos:', data);
-                    if (data.projetos) {
-                        const projetosList = document.getElementById('projetos-list');
-                        data.projetos.forEach(projeto => {
-                            console.log('Projeto:', projeto);
-                            const item = document.createElement('div');
-                            item.classList.add('item');
-                            item.innerHTML = `
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                console.log('Documento carregado');
+                fetch('https://script.google.com/macros/s/AKfycbybh1cYcYtvJbzgGuWjzaXSjM5pfOeMt1NVl5-H-RvK68NcBoATyYhxjcQkdpuuoXzOHw/exec')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Dados recebidos:', data);
+                        if (data.projetos) {
+                            const projetosList = document.getElementById('projetos-list');
+                            data.projetos.forEach(projeto => {
+                                console.log('Projeto:', projeto);
+                                const item = document.createElement('div');
+                                item.classList.add('item');
+                                item.innerHTML = `
                                 <div class="item-content">
                                     <p><span class="blue-text">Ordem ${projeto.ordem}</span>: ${projeto.nome} - ${projeto.dados}</p>
                                 </div>
                             `;
-                            projetosList.appendChild(item);
-                        });
-                    }
+                                projetosList.appendChild(item);
+                            });
+                        }
 
-                    if (data.sugestoes) {
-                        const sugestoesList = document.getElementById('sugestoes-list');
-                        data.sugestoes.forEach(sugestao => {
-                            console.log('Sugestão:', sugestao);
-                            const item = document.createElement('div');
-                            item.classList.add('item');
-                            item.innerHTML = `
+                        if (data.sugestoes) {
+                            const sugestoesList = document.getElementById('sugestoes-list');
+                            data.sugestoes.forEach(sugestao => {
+                                console.log('Sugestão:', sugestao);
+                                const item = document.createElement('div');
+                                item.classList.add('item');
+                                item.innerHTML = `
                                 <div class="item-content">
                                     <p><span class="blue-text">Ordem ${sugestao.ordem}</span>: ${sugestao.nome} - ${sugestao.dados}</p>
                                 </div>
                             `;
-                            sugestoesList.appendChild(item);
-                        });
-                    }
+                                sugestoesList.appendChild(item);
+                            });
+                        }
 
-                    if (data.correcoes) {
-                        const correcoesList = document.getElementById('correcoes-list');
-                        data.correcoes.forEach(correcao => {
-                            console.log('Correção:', correcao);
-                            const item = document.createElement('div');
-                            item.classList.add('item');
-                            item.innerHTML = `
+                        if (data.correcoes) {
+                            const correcoesList = document.getElementById('correcoes-list');
+                            data.correcoes.forEach(correcao => {
+                                console.log('Correção:', correcao);
+                                const item = document.createElement('div');
+                                item.classList.add('item');
+                                item.innerHTML = `
                                 <div class="item-content">
                                     <p><span class="blue-text">Ordem ${correcao.ordem}</span>: ${correcao.nome} - ${correcao.dados}</p>
                                 </div>
                             `;
-                            correcoesList.appendChild(item);
-                        });
-                    }
+                                correcoesList.appendChild(item);
+                            });
+                        }
 
-                    // Esconder a tela de carregamento
-                    const loadingScreen = document.getElementById('loading-screen');
-                    loadingScreen.classList.add('hidden');
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar dados:', error);
-                    alert('Erro ao carregar dados. Por favor, tente novamente mais tarde.');
-                });
-        });
-    </script>
+                        // Esconder a tela de carregamento
+                        const loadingScreen = document.getElementById('loading-screen');
+                        loadingScreen.classList.add('hidden');
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar dados:', error);
+                        /*alert('Erro ao carregar dados. Por favor, tente novamente mais tarde.');*/
+                    });
+            });
+        </script>
+       
 </body>
 
 </html>
